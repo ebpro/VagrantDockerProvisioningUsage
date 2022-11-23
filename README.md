@@ -78,7 +78,7 @@ Pour utiliser Docker depuis l'hôte, il faut installer un client docker  sur l'h
 
 ```bash
 curl -sL https://download.docker.com/linux/static/stable/x86_64/docker-20.10.19.tgz  | \
-    tar --directory=/home/${HOME}/bin/ --strip-components=1 -zx docker/docker &&\
+    tar --directory=${HOME}/bin/ --strip-components=1 -zx docker/docker &&\
      chmod +x ~/bin/docker
 ```
 
