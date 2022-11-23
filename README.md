@@ -5,10 +5,11 @@ Un exemple d'utilisation de Vagrant pour provisionner une VM et d'ansible pour i
 ## Installer Vagrant
 
 ```bash
-mkdir -p ~/bin && export PATH=~/bin:$PATH
-wget -qO- https://releases.hashicorp.com/vagrant/2.3.3/vagrant_2.3.3_linux_amd64.zip|gunzip - \
-    > ~/bin/vagrant
-chmod +x ~/bin/vagrant
+mkdir -p ~/bin && \
+    export PATH=~/bin:$PATH && \
+    wget -qO- https://releases.hashicorp.com/vagrant/2.3.3/vagrant_2.3.3_linux_amd64.zip|gunzip - \
+    > ~/bin/vagrant && \
+    chmod +x ~/bin/vagrant
 ```
 
 ## Paramétrer VirtualBox pour le stockage
@@ -91,6 +92,7 @@ Puis définir le point de connexion de Docker , enlever les clés publiques exis
 Il est alors possible d'utiliser les commandes docker depuis l'hôte et qu'elles s'éxecute dans la VM :
 
 ```bash
-mkdir -p data/my-web-site
-echo "Hello Docker" >   data/my-web-site/index.html
-docker run --rm -p8080:80 -v /scratch/my-web-site::/usr/share/nginx/html nginx
+mkdir -p data/my-web-site && \
+    echo "Hello Docker" >   data/my-web-site/index.html && \
+    docker run --rm -p8080:80 -v /scratch/my-web-site::/usr/share/nginx/html nginx
+```
