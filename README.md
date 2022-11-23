@@ -78,7 +78,7 @@ Pour utiliser Docker depuis l'hôte, il faut installer un client docker  sur l'h
 
 ```bash
 curl -sL https://download.docker.com/linux/static/stable/x86_64/docker-20.10.19.tgz  | \
-    tar --directory=/home/bruno/bin/ --strip-components=1 -zx docker/docker &&\
+    tar --directory=${HOME}/bin/ --strip-components=1 -zx docker/docker &&\
      chmod +x ~/bin/docker
 ```
 
@@ -93,4 +93,4 @@ Il est alors possible d'utiliser les commandes docker depuis l'hôte et qu'elles
 ```bash
 mkdir -p data/my-web-site
 echo "Hello Docker" >   data/my-web-site/index.html
-docker run --rm -p8080:80 -v ${PWD}/data/my-web-site::/usr/share/nginx/html nginx
+docker run --rm -p8080:80 -v /scratch/my-web-site::/usr/share/nginx/html nginx
