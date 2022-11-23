@@ -94,5 +94,5 @@ Il est alors possible d'utiliser les commandes docker depuis l'hôte et qu'elles
 ```bash
 mkdir -p data/my-web-site && \
     echo "Hello Docker" >   data/my-web-site/index.html && \
-    docker run --rm -p8080:80 -v /scratch/my-web-site:/usr/share/nginx/html nginx
+    docker run --rm -p8080:80 -v /vagrant/data/my-web-site:/usr/share/nginx/html nginx
 ```
