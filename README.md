@@ -18,7 +18,8 @@ Si besoin, il est possible de stocker les images des VM dans un autre répertoir
 ```bash
 VBoxManage list systemproperties | grep "Default machine folder:" && \
     mkdir -p /scratch/${USER} && \
-    vboxmanage setproperty machinefolder /scratch/${USER}
+    vboxmanage setproperty machinefolder /scratch/${USER}/VirtualBox\ VMs && \
+    echo -n "New " && VBoxManage list systemproperties | grep "Default machine folder:" 
 ```
 
 ### Si besoin d'un proxy HTTP
