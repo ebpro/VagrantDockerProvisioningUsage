@@ -89,7 +89,7 @@ Puis définir le point de connexion de Docker , enlever les clés publiques exis
 . ./set-docker-env.sh
 ```
 
-Il est alors possible d'utiliser les commandes docker depuis l'hôte et qu'elles s'éxecute dans la VM :
+Il est alors possible d'utiliser les commandes Docker depuis l'hôte. Elles s'éxecutent dans la VM. Les ports sont mappés de docker vers la VM, puis de la VM vers l'hôtes (si activé dans Vagrantfile). Les chemins sont montés depuis l'hôtes vers la VM et dans les conteneurs.
 
 ```bash
 mkdir -p data/my-web-site && \
