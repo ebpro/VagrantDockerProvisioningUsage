@@ -6,7 +6,8 @@ Un exemple d'utilisation de Vagrant pour provisionner une VM et d'ansible pour i
 
 ```bash
 mkdir -p ~/bin && export PATH=~/bin:$PATH
-wget -qO- https://releases.hashicorp.com/vagrant/2.3.3/vagrant_2.3.3_linux_amd64.zip|gunzip - > ~/bin
+wget -qO- https://releases.hashicorp.com/vagrant/2.3.3/vagrant_2.3.3_linux_amd64.zip|gunzip - \
+    > ~/bin/vagrant
 chmod +x ~/bin/vagrant
 ```
 
