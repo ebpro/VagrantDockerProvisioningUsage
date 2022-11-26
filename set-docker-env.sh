@@ -5,7 +5,7 @@ eval `vagrant ssh-config|\
 	sed 's/  /VAGRANT_/'|tr ' ' '='`
 
 export DOCKER_HOST=ssh://vagrant@${VAGRANT_HostName}:${VAGRANT_Port}
-ssh-keygen -R "[${VAGRANT_HostName}]:${VAGRANT_Port}"
-ssh-keyscan -p "${VAGRANT_Port}" "${VAGRANT_HostName}" >> ~/.ssh/known_hosts
+ssh-keygen -R "[${VAGRANT_HostName}]:${VAGRANT_Port}" > /dev/null
+ssh-keyscan -p "${VAGRANT_Port}" "${VAGRANT_HostName}" >> ~/.ssh/known_hosts 2> /dev/null
 
-ssh-add $VAGRANT_IdentityFile
+ssh-add -q $VAGRANT_IdentityFile
