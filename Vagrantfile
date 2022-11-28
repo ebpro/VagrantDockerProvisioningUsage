@@ -45,7 +45,8 @@ Vagrant.configure("2") do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
 #    masterconfig.vm.synced_folder "~/", "/vagrant_data"
-    end
+
+end
 #    nodeconfig.vm.provision :shell, path: "cleanup.sh"
   end
 end
