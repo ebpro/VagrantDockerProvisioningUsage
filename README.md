@@ -109,7 +109,7 @@ Puis définir le point de connexion de Docker, enlever les clés publiques exist
 . ./set-docker-env.sh
 ```
 
-En ajoutant la fonction suivante dans le .bashrc ou le .zshrc, la connexions vers le docker engine sera faite dans chaque shell en invoquant `use-vagrant-docker`.
+En ajoutant la fonction suivante dans le .bashrc ou le .zshrc, la connexions vers le docker engine sera faite dans chaque shell en invoquant `eval $(use-vagrant-docker)`.
 
 ```bash
 use-vagrant-docker () ( VAGRANT_dockerNode1Path=`vagrant global-status | \
