@@ -5,7 +5,7 @@ ram=ENV['DOCKER_RAM']||1024
 cpus=ENV['DOCKER_CPUS']||2
 basehostname=ENV['HOSTNAME']||1
 
-hostname='docker-node-'+hostname.to_s
+hostname='docker-node-'+basehostname.to_s
 
 nodes = [
   { :hostname => hostname+"-1", :ram => ram , :cpus => cpus  }
