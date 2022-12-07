@@ -3,10 +3,12 @@
 
 ram=ENV['DOCKER_RAM']||1024
 cpus=ENV['DOCKER_CPUS']||2
-hostname=ENV['HOSTNAME']||1
+basehostname=ENV['HOSTNAME']||1
+
+hostname='docker-node-'+hostname.to_s
 
 nodes = [
-  { :hostname => 'docker-node-'+hostname.to_s, :ram => ram , :cpus => cpus  }
+  { :hostname => hostname+"-1", :ram => ram , :cpus => cpus  }
 ]
 Vagrant.configure("2") do |config|
   ## Provision nodes
@@ -29,25 +31,25 @@ Vagrant.configure("2") do |config|
   ## Create a forwarded port mapping which allows access to a specific port
   ## within the machine from a port on the host machine and only allow access
   ## via 127.0.0.1 to disable public access
-  config.vm.define "docker-node-1" do |masterconfig|
+  config.vm.define hostname+"_1" do |masterconfig|
  #    masterconfig.vm.network "forwarded_port", guest: 80,    host: 80,
  #    		auto_correct: true #, host_ip: "127.0.0.1"
  #    masterconfig.vm.network "forwarded_port", guest: 443,   host: 443,
  #    		auto_correct: true  #, host_ip: "127.0.0.1"
 
     masterconfig.vm.network "forwarded_port", guest: 8080,  host: 8080,
-    		auto_correct: true , host_ip: "127.0.0.1"
+    	auto_correct: true , host_ip: "127.0.0.1"
     masterconfig.vm.network "forwarded_port", guest: 4443,  host: 4443,
-    		auto_correct: true , host_ip: "127.0.0.1"
+    	auto_correct: true , host_ip: "127.0.0.1"
     # H2 Database
     masterconfig.vm.network "forwarded_port", guest: 1521,  host: 1521,
-    		auto_correct: true , host_ip: "127.0.0.1"
+    	auto_correct: true , host_ip: "127.0.0.1"
    #Postgres Database
     masterconfig.vm.network "forwarded_port", guest: 5432,  host: 5432,
-    		auto_correct: true , host_ip: "127.0.0.1"
+    	auto_correct: true , host_ip: "127.0.0.1"
    #MySQL Database
    masterconfig.vm.network "forwarded_port", guest: 3306,  host: 3306,
-   auto_correct: true #, host_ip: "127.0.0.1"
+      auto_correct: true , host_ip: "127.0.0.1"
 
  # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
@@ -55,4 +57,5 @@ Vagrant.configure("2") do |config|
   # argument is a set of non-required options.
   masterconfig.vm.synced_folder "~/", "/vagrant_data"
   end
+end
 end
