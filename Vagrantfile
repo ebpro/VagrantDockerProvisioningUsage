@@ -30,10 +30,10 @@ Vagrant.configure("2") do |config|
   ## within the machine from a port on the host machine and only allow access
   ## via 127.0.0.1 to disable public access
   config.vm.define "docker-node-1" do |masterconfig|
-#    masterconfig.vm.network "forwarded_port", guest: 80,    host: 80,
-#    		auto_correct: true #, host_ip: "127.0.0.1"
-#    masterconfig.vm.network "forwarded_port", guest: 443,   host: 443,
-#    		auto_correct: true  #, host_ip: "127.0.0.1"
+ #    masterconfig.vm.network "forwarded_port", guest: 80,    host: 80,
+ #    		auto_correct: true #, host_ip: "127.0.0.1"
+ #    masterconfig.vm.network "forwarded_port", guest: 443,   host: 443,
+ #    		auto_correct: true  #, host_ip: "127.0.0.1"
 
     masterconfig.vm.network "forwarded_port", guest: 8080,  host: 8080,
     		auto_correct: true , host_ip: "127.0.0.1"
@@ -49,9 +49,10 @@ Vagrant.configure("2") do |config|
    masterconfig.vm.network "forwarded_port", guest: 3306,  host: 3306,
    auto_correct: true #, host_ip: "127.0.0.1"
 
-# Share an additional folder to the guest VM. The first argument is
+ # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   masterconfig.vm.synced_folder "~/", "/vagrant_data"
+  end
 end
