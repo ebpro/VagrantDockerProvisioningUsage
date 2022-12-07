@@ -2,6 +2,34 @@
 
 Un exemple d'utilisation de Vagrant pour provisionner une VM et d'ansible pour installer Docker à l'intérieur pour permettre une utilisation de docker en simple utilisateur.
 
+## Quickstart
+
+if needed set standard proxy variables (http_proxy, ...) and run :
+
+```bash
+source <(curl -s https://raw.githubusercontent.com/ebpro/demomavenarchetype/develop/src/main/resources/archetype-resources/wrappers.sh)
+```
+
+```bash
+export VAGRANT_HTTP_PROXY=${http_proxy}
+export VAGRANT_HTTPS_PROXY=${https_proxy}
+export VAGRANT_NO_PROXY=${no_proxy}
+```
+
+```bash
+install-dockerclient-vagrant
+```
+
+```bash
+provision-docker-engine
+```
+
+```bash
+git clone https://github.com/ebpro/VagrantDockerProvisioningUsage.git && \
+cd VagrantDockerProvisioningUsage && \
+vagrant up
+```
+
 ## Installer Vagrant
 
 ```bash
