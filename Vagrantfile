@@ -3,9 +3,10 @@
 
 ram=ENV['DOCKER_RAM']||1024
 cpus=ENV['DOCKER_CPUS']||2
+hostname=ENV['HOSTNAME']||1
 
 nodes = [
-  { :hostname => 'docker-node-'+ENV['HOSTNAME'], :ram => ram , :cpus => cpus  }
+  { :hostname => 'docker-node-'+hostname, :ram => ram , :cpus => cpus  }
 ]
 Vagrant.configure("2") do |config|
   ## Provision nodes
