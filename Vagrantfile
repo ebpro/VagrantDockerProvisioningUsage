@@ -1,8 +1,11 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+ram=ENV['DOCKER_RAM']||1024
+cpus=ENV['DOCKER_CPUS']||2
+
 nodes = [
-  { :hostname => 'docker-node-'+ENV['HOSTNAME'], :ram => ENV['DOCKER_RAM']||1024, :cpus => ENV['DOCKER_CPUS']||2  }
+  { :hostname => 'docker-node-'+ENV['HOSTNAME'], :ram => ram , :cpus => cpus  }
 ]
 Vagrant.configure("2") do |config|
   ## Provision nodes
