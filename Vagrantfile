@@ -2,8 +2,7 @@
 # vi: set ft=ruby :
 
 nodes = [
-  # { :hostname => 'docker-node-1', :ip => '192.168.56.10', :ram => 1024, :cpus => 2 }
-  { :hostname => 'docker-node-1',  :ram => 1024, :cpus => 2 }
+  { :hostname => 'docker-node-'+ENV['HOSTNAME'], :ram => ENV['DOCKER_RAM']||1024, :cpus => ENV['DOCKER_CPUS']||2  }
 ]
 Vagrant.configure("2") do |config|
   ## Provision nodes
@@ -29,22 +28,28 @@ Vagrant.configure("2") do |config|
   config.vm.define "docker-node-1" do |masterconfig|
 #    masterconfig.vm.network "forwarded_port", guest: 80,    host: 80,
 #    		auto_correct: true #, host_ip: "127.0.0.1"
-    masterconfig.vm.network "forwarded_port", guest: 8080,  host: 8080,
-    		auto_correct: true #, host_ip: "127.0.0.1"
 #    masterconfig.vm.network "forwarded_port", guest: 443,   host: 443,
 #    		auto_correct: true  #, host_ip: "127.0.0.1"
-#    masterconfig.vm.network "forwarded_port", guest: 4443,  host: 4443,
-#    		auto_correct: true #, host_ip: "127.0.0.1"
-#    masterconfig.vm.network "forwarded_port", guest: 1521,  host: 1521,
-#    		auto_correct: true #, host_ip: "127.0.0.1"
-#    masterconfig.vm.network "forwarded_port", guest: 5432,  host: 5432,
-#    		auto_correct: true #, host_ip: "127.0.0.1"
-  
+
+    masterconfig.vm.network "forwarded_port", guest: 8080,  host: 8080,
+    		auto_correct: true , host_ip: "127.0.0.1"
+    masterconfig.vm.network "forwarded_port", guest: 4443,  host: 4443,
+    		auto_correct: true , host_ip: "127.0.0.1"
+    # H2 Database
+    masterconfig.vm.network "forwarded_port", guest: 1521,  host: 1521,
+    		auto_correct: true , host_ip: "127.0.0.1"
+   #Postgres Database
+    masterconfig.vm.network "forwarded_port", guest: 5432,  host: 5432,
+    		auto_correct: true , host_ip: "127.0.0.1"
+   #MySQL Database
+   masterconfig.vm.network "forwarded_port", guest: 3306,  host: 3306,
+   auto_correct: true #, host_ip: "127.0.0.1"
+
 # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-#    masterconfig.vm.synced_folder "~/", "/vagrant_data"
+masterconfig.vm.synced_folder "~/", "/vagrant_data"
 
 end
 #    nodeconfig.vm.provision :shell, path: "cleanup.sh"
